@@ -7,7 +7,7 @@ import json
 import requests
 from texttable import Texttable
 import RuneInfo
-
+ 
 def championGGrequest(Champion,API,type):
 	api_args = {'api_key' : 'API'}
 	URL = 'http://api.champion.gg/champion/' + Champion + '/runes/' + type
