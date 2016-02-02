@@ -14,5 +14,7 @@ To improve the run time, it would probably be best to have RuneInfo.py refer to 
 
 ### Resources
 [prettytable](https://code.google.com/archive/p/prettytable/)
+
 [Champion.gg](http://champion.gg/)
+
 [Champion.gg API](http://api.champion.gg/)
