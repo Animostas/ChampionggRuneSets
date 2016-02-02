@@ -19,7 +19,7 @@ RuneCost = {
         },
 
         'Defensive': {		
-		    'Greater Quintessence of Health': 2050,
+	    'Greater Quintessence of Health': 2050,
             'Greater Quintessence of Scaling Health': 2050,
             'Greater Quintessence of Armor': 1025,
             'Greater Quintessence of Scaling Armor': 1025,
@@ -80,7 +80,7 @@ RuneCost = {
         },
 		
         'Utility': {
-		    'Greater Glyph of Cooldown Reduction': 820,
+	    'Greater Glyph of Cooldown Reduction': 820,
             'Greater Glyph of Scaling Cooldown Reduction': 410,
             'Greater Glyph of Mana': 410,
             'Greater Glyph of Scaling Mana': 410,
