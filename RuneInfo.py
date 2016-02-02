@@ -89,7 +89,7 @@ RuneCost = {
             'Greater Glyph of Energy': 820,
             'Greater Glyph of Scaling Energy': 820
         }
-    }
+    },
 	
     'Mark': {
         'Offensive': {
@@ -99,7 +99,7 @@ RuneCost = {
             'Greater Mark of Critical Damage': 820,
             'Greater Mark of Critical Chance': 410,
             'Greater Mark of Armor Penetration': 410,
-            'Greater Mark of Magic Penetration': 205		
+            'Greater Mark of Magic Penetration': 205,		
             'Greater Mark of Ability Power': 410,
             'Greater Mark of Scaling Ability Power': 410,
             'Greater Mark of Hybrid Penetration': 820,
@@ -159,5 +159,5 @@ RuneCost = {
 }
 
 listOffensive = ['Attack', 'Critical', 'Penetration', 'Ability', 'Vamp', 'Steal', 'Precision']
-listDefensive = ['Health', 'Armor' (not Penetration), 'Resist', 'Revival']
+listDefensive = ['Health', 'Armor', 'Resist', 'Revival']
 listUtility = ['Cooldown', 'Mana', 'Energy', 'Movement', 'Gold', 'Experience', 'Energy']
