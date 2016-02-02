@@ -32,6 +32,8 @@ Total IP: 5829
 ### Future Changes & Notes
 To improve the run time, it would probably be best to have RuneInfo.py refer to a single dictionary that maps rune ID to rune cost, and have the request to Champion.gg save the rune ID instead of the rune name. Nested dictionaries improves the run time from O(n), but may in fact make the run time worse due to having to search for a word in each rune name. The rune ID information is not readily available by either Riot API or Champion.gg API, and would thus require an entirely new module.
 
+Any promotional runes (Holiday, Razer, etc.) are given values of 0 IP and are in a seperate category, as it is highly unlikely those will be returned as a potential valuie.
+
 ### Resources
 [prettytable](https://code.google.com/archive/p/prettytable/)
 
