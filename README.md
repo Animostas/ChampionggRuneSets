@@ -1,4 +1,4 @@
-# ChampionggRunes
+# Championgg Runes
 
 ### Introduction
 I made this as a resouce to calculate the IP cost to create a semi-competitive rune page for a specific champion. It first pulls information from Champion.gg's API, and saves the rune information into a table. Rune cost info can be hard to find and tedious to calculate, and so I created a module that uses nested dictionaries in order to search for the cost of the rune. All of the information is then formatted using PrettyTable, and prints directly into the command prompt
