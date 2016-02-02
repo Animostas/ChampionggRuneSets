@@ -90,3 +90,4 @@ if __name__ == "__main__":
 	
 	print(t)
 	print('{}{}'.format('\nTotal IP: ', total_cost))
+ 
