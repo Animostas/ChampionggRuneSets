@@ -1,56 +1,64 @@
-#import os
-#import re
-#from collections import Counter
-#from html.parser import HTMLParser
-#from urllib import request
 import json
 import requests
-from texttable import Texttable
 import RuneInfo
- 
-def championGGrequest(Champion,API,type):
-	api_args = {'api_key' : 'API'}
+from prettytable import PrettyTable
+
+# Type your API here in quotes
+API = ''
+
+# Method to send request to Champion.gg
+def championGGrequest(Champion,choice):
+	type = ''
+	if choice == 0:
+		type = 'mostPopular'
+	if choice == 1:
+		type = 'mostWins'
+	api_args = {'api_key' : API}
 	URL = 'http://api.champion.gg/champion/' + Champion + '/runes/' + type
 	r = requests.get(URL, params=api_args)
-	status = r.status
-	if (status = 404)
-		print("No Champion Found")
-	if (status = 200)
+	if r.status_code == 404:
+		print('Invalid Input')
+		raise SystemExit
+	if r.status_code == 200:
 		r.json()
-		return r[0]['runes']
-		
-	
+		return r.json()[0]['runes']
+	elif (r.json()['error'] == 'ChampionNotFound'):
+		print('Champion not found')
+		raise SystemExit
 
+# Adds a row to PrettyTable for each rune
 def createTableValues(Champion):
 	for i in range(len(Champion)):
 		name = Champion[i]['name']
 		number = Champion[i]['number']
 		description = Champion[i]['description']
-		cost = RuneCost[findType1(name)][findType2(name)][name]
+		cost = RuneInfo.RuneCost[findType1(name)][findType2(name)][name]
 		acc_cost = cost * number
 		
-		runes_names.append(name)
-		runes_numbers.append(number)
-		runes_description.append(description)
+		rune_names.append(name)
+		rune_numbers.append(number)
+		rune_description.append(description)
 		individual_costs.append(cost)
 		accumulated_costs.append(acc_cost)
 	
-		t.add_rows([name,number,description,cost,acc_cost])		
+		t.add_row([name,number,description,cost,acc_cost])		
 
+# Searches name of rune to find first keyword
 def findType1(name):
 	runeType1 = ['Quintessence','Glyph','Mark','Seal']
 	for word in runeType1:
 		if word in name:
 			return word
 
+# Searches name of rune to find second keyword
 def findType2(name):
-	for word in listOffensive:
+	for word in RuneInfo.listOffensive:
 		if word in name:
 			return 'Offensive'	
-	for word in listDefensive
+	for word in RuneInfo.listDefensive:
 		if word in name:
 			return 'Defensive'
-	for word in listUtility
+	for word in RuneInfo.listUtility:
 		if word in name:
 			return 'Utility'
 			
@@ -59,20 +67,26 @@ if __name__ == "__main__":
 	rune_numbers = []
 	rune_description = []
 	individual_costs = []
-	acculumated_costs = []
+	accumulated_costs = []
 	URL = ''
 	status = 0
-	t = Texttable()
-	t.add_rows(['Name','#','Description','Cost (IP)','Accumulated Cost (IP)'])
-	
-	Caitlyn = [{"games":2015,"winPercent":49.67,"runes":[{"id":5245,"name":"Greater Mark of Attack Damage","description":"+0.95 attack damage","number":9},{"id":5289,"name":"Greater Glyph of Magic Resist","description":"+1.34 magic resist","number":9},{"id":5317,"name":"Greater Seal of Armor","description":"+1 armor","number":9},{"id":5337,"name":"Greater Quintessence of Attack Speed","description":"+4.5% attack speed","number":3}],"role":"ADC"}]
+	t = PrettyTable(['Name','#','Description','Cost (IP)','Accumulated Cost (IP)'])
 
-	Champion = Caitlyn[0]['runes']
-#	Champion = championGGrequest
+	print('Type name of champion')
+
+	name = input()
+	name.lower().capitalize()
+	
+	print('Input 0 for Most Popular')
+	print('Input 1 for Most Wins')
+
+	choice = input()
+
+	Champion = championGGrequest(name,int(choice))
 	
 	createTableValues(Champion)
 
 	total_cost = sum(accumulated_costs)
 	
-	print(t.draw())
-	print("\nTotal IP: " + total_cost)
+	print(t)
+	print('{}{}'.format('\nTotal IP: ', total_cost))
